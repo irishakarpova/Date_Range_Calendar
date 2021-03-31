@@ -1,3 +1,4 @@
+import React from "react";
 import { Component } from "react";
 import classes from "./styles.module.css";
 import { connect } from "react-redux";

@@ -33,6 +33,7 @@
     color: #71a8d0;
     font-weight: 700;
     margin: 0;
+    font-size: 16px;
     padding-top: 25px;
     letter-spacing: 0.05rem;
 }
@@ -110,11 +111,14 @@
     font-style: italic;
     font-weight: 600;
     margin-bottom: 0;
+    font-size: 16px;
+    color: #383838;
 }
 .CardListText {
     font-family: "Source Sans Pro", sans-serif;
     color: #808080;
     font-style: italic;
+    font-size: 16px;
 }
 
 .reset_btn {
