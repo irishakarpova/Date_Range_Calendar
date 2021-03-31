@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Signika:wght@600&display=swap");
+body {
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 50px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@media (max-width: 1250px) {
+    .container {
+        width: 1000px;
+    }
+    body {
+        padding: 15px;
+    }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
 }
-
-.App-link {
-  color: #61dafb;
+.DayPicker-Caption > div {
+    color: #71a8d0;
+    font-family: "Signika", sans-serif;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.DayPicker-Weekday {
+    font-family: "Nunito", sans-serif;
+}
+.DayPicker-Day {
+    font-family: "Nunito", sans-serif;
+    color: #38484c;
+}
+.DayPicker-Months {
+    padding: 15px;
 }
