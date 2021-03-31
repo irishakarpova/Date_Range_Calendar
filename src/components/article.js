@@ -3,7 +3,7 @@ import CommentList from "./comment-list";
 import "../App.css";
 import { connect } from "react-redux";
 import { deleteArticle } from "../AC";
-import styles from "./styles.module.css";
+import classes from "./styles.module.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 function Article({
@@ -13,20 +13,20 @@ function Article({
     handleOpenArticleId
 }) {
     return (
-        <div className={styles.CardContainer}>
-            <div className={styles.CardHeadRow}>
+        <div className={classes.CardContainer}>
+            <div className={classes.CardHeadRow}>
                 <AiFillCloseCircle
-                    className={styles.Up_Down_Close}
+                    className={classes.Up_Down_Close}
                     onClick={() => {
                         deleteArticle(article.id);
                     }}
                 />
             </div>
-            <h1 className={styles.CardHeader}>{article.title}</h1>
+            <h1 className={classes.CardHeader}>{article.title}</h1>
 
-            <h4 className={styles.CardDate}>{article.date}</h4>
+            <h4 className={classes.CardDate}>{article.date}</h4>
 
-            <section className={styles.CardText}>{article.text}</section>
+            <section className={classes.CardText}>{article.text}</section>
 
             <CommentList
                 comments={article.comments}
