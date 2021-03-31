@@ -23,23 +23,25 @@ class AddComment extends Component {
     };
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    className={classes.inputField}
-                    placeholder="Name"
-                    value={this.state.user}
-                    onChange={this.handleChange("user")}
-                />
-                <input
-                    className={classes.inputField}
-                    placeholder="Quote"
-                    value={this.state.text}
-                    onChange={this.handleChange("text")}
-                />
-                <button className={classes.BtnField} type="submit">
-                    SUBMIT
-                </button>
-            </form>
+            <div className={classes.inputForm}>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        className={classes.inputField}
+                        placeholder="Name"
+                        value={this.state.user}
+                        onChange={this.handleChange("user")}
+                    />
+                    <input
+                        className={classes.inputField}
+                        placeholder="Quote"
+                        value={this.state.text}
+                        onChange={this.handleChange("text")}
+                    />
+                    <button className={classes.BtnField} type="submit">
+                        SUBMIT
+                    </button>
+                </form>
+            </div>
         );
     }
 }

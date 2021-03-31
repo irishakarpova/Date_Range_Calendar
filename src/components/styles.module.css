@@ -26,14 +26,15 @@
     font-size: 24px;
     color: #e5901c;
     margin-top: 15px;
+    letter-spacing: 0.12rem;
 }
 .CardDate {
     font-family: "Signika", sans-serif;
-
     color: #71a8d0;
     font-weight: 700;
     margin: 0;
     padding-top: 25px;
+    letter-spacing: 0.05rem;
 }
 .CardText {
     font-family: "Nunito Sans", sans-serif;
@@ -42,6 +43,7 @@
     line-height: 28px;
     padding-top: 30px;
     padding-bottom: 20px;
+    letter-spacing: 0.05rem;
 }
 .AiFillCloseCircle_Btn {
     background: none;
@@ -61,6 +63,7 @@
 .CardListName {
     color: #71a8d0;
     cursor: pointer;
+    font-size: 15px;
 }
 .Up_Down_Close {
     width: 15px;
@@ -148,4 +151,7 @@
     width: 100px;
     border-radius: 20px;
     cursor: pointer;
+}
+.inputForm {
+    padding-top: 30px;
 }

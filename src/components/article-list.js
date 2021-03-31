@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import Article from "./article";
 import { connect } from "react-redux";
 import { filtratedArticleSelector } from "../selectors";
-import styles from "./styles.module.css";
+import classes from "./styles.module.css";
 import Accordion from "./accordion";
 
 class ArticleList extends Component {
     render() {
         return (
-            <div className={styles.CardColumns}>
-                <ul className={styles.Cardlist}>{this.itemsListLeft}</ul>
-                <ul className={styles.Cardlist}>{this.itemsListRight}</ul>
+            <div className={classes.CardColumns}>
+                <ul className={classes.Cardlist}>{this.itemsListLeft}</ul>
+                <ul className={classes.Cardlist}>{this.itemsListRight}</ul>
             </div>
         );
     }
@@ -19,7 +19,7 @@ class ArticleList extends Component {
         const { articles, openArticleId, handleOpenArticleId } = this.props;
         return articles.map((article, index) => {
             return index % 2 === 0 ? (
-                <li className={styles.CardListItems} key={article.id}>
+                <li className={classes.CardListItems} key={article.id}>
                     <Article
                         article={article}
                         openArticleId={openArticleId}
@@ -34,7 +34,7 @@ class ArticleList extends Component {
         const { articles, openArticleId, handleOpenArticleId } = this.props;
         return articles.map((article, index) => {
             return (index + 1) % 2 === 0 ? (
-                <li className={styles.CardListItems} key={article.id}>
+                <li className={classes.CardListItems} key={article.id}>
                     <Article
                         article={article}
                         openArticleId={openArticleId}

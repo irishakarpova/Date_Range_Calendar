@@ -7,15 +7,11 @@ body {
     padding: 50px;
 }
 .container {
-    width: 1200px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 @media (max-width: 1250px) {
-    .container {
-        width: 1000px;
-    }
     body {
         padding: 15px;
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Comment from "./comment";
 import WithAction from "./withAccordion";
-import styles from "./styles.module.css";
+import classes from "./styles.module.css";
 import AddArticle from "./addArticle";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
 
@@ -20,30 +20,30 @@ class CommentList extends Component {
             <>
                 {comments.length ? (
                     <div
-                        className={styles.CardListGroups}
+                        className={classes.CardListGroups}
                         onClick={() => {
                             handleOpenArticleId(id);
                         }}
                     >
-                        <h4 className={styles.CardListName}>QUOTES</h4>
+                        <h4 className={classes.CardListName}>QUOTES</h4>
                         {isOpen ? (
-                            <AiFillUpCircle className={styles.Up_Down_Close} />
+                            <AiFillUpCircle className={classes.Up_Down_Close} />
                         ) : (
                             <AiFillDownCircle
-                                className={styles.Up_Down_Close}
+                                className={classes.Up_Down_Close}
                             />
                         )}
                     </div>
                 ) : null}
                 {isOpenComment && (
                     <>
-                        <ul className={styles.CardlistComments}>
+                        <ul className={classes.CardlistComments}>
                             {this.itemsList}
                         </ul>
                         {isOpen ? (
                             <button
                                 onClick={handleOpenForm}
-                                className={styles.BtnAddQuote}
+                                className={classes.BtnAddQuote}
                             >
                                 Add New
                             </button>
@@ -60,7 +60,7 @@ class CommentList extends Component {
         const { comments = [] } = this.props;
 
         return comments.map((id) => (
-            <li key={id} className={styles.CardListItems1}>
+            <li key={id} className={classes.CardListItems1}>
                 <Comment id={id} />
             </li>
         ));
