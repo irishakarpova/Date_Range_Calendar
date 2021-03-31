@@ -1,3 +1,4 @@
+import React from "react";
 import { connect } from "react-redux";
 import { getComment } from "../selectors";
 import styles from "./styles.module.css";
