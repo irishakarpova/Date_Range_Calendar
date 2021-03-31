@@ -14,6 +14,7 @@ const WithAction = (OriginalComponent) =>
 
         handleOpenForm = () => {
             this.setState({ isOpen: !this.state.isOpen });
+            console.log("isOpen", this.state.isOpen);
         };
 
         render() {

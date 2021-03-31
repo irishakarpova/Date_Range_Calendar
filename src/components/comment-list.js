@@ -23,15 +23,16 @@ class CommentList extends Component {
                         className={classes.CardListGroups}
                         onClick={() => {
                             handleOpenArticleId(id);
+                            handleOpenForm();
                         }}
                     >
                         <h4 className={classes.CardListName}>QUOTES</h4>
                         {isOpen ? (
-                            <AiFillUpCircle className={classes.Up_Down_Close} />
-                        ) : (
                             <AiFillDownCircle
                                 className={classes.Up_Down_Close}
                             />
+                        ) : (
+                            <AiFillUpCircle className={classes.Up_Down_Close} />
                         )}
                     </div>
                 ) : null}
