@@ -4,13 +4,10 @@
         "@babel/plugin-syntax-jsx",
         "@babel/plugin-proposal-class-properties",
         [
-            "css-modules-transform",
+            "babel-plugin-react-css-modules",
             {
-                "extractCss": {
-                    "dir": "./lib/stylesheets/",
-                    "relativeRoot": "./src/",
-                    "filename": "[path]/[name].css"
-                }
+                "webpackHotModuleReloading": true,
+                "autoResolveMultipleImports": true
             }
         ]
     ]
