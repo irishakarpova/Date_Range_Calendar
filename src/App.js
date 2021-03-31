@@ -8,7 +8,6 @@ function App() {
     return (
         <div className="container">
             <Provider store={store}>
-                <DayPicker />
                 <ArticleList />
             </Provider>
         </div>
