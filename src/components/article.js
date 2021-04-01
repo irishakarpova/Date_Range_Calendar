@@ -1,6 +1,6 @@
 import React from "react";
 import CommentList from "./comment-list";
-import "../App.css";
+
 import { connect } from "react-redux";
 import { deleteArticle } from "../AC";
 import classes from "./styles.module.css";
@@ -23,11 +23,8 @@ function Article({
                 />
             </div>
             <h1 className={classes.CardHeader}>{article.title}</h1>
-
             <h4 className={classes.CardDate}>{article.date}</h4>
-
             <section className={classes.CardText}>{article.text}</section>
-
             <CommentList
                 comments={article.comments}
                 handleOpenArticleId={handleOpenArticleId}

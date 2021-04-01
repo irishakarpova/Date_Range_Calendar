@@ -1,8 +1,7 @@
 const defaultFilters = {
     dateRange: {
         from: null,
-        to: null,
-        enteredTo: null
+        to: null
     }
 };
 

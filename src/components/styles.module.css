@@ -10,10 +10,11 @@
     border-radius: 16px;
     padding: 15px 15px 15px 35px;
 }
-@media (max-width: 800px) {
+@media (max-width: 940px) {
     .CardContainer {
-        width: calc(100% - 50px);
-        margin-right: 0px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 .CardHeadRow {
@@ -78,7 +79,7 @@
     flex-direction: row;
     align-items: flex-start;
 }
-@media (max-width: 840px) {
+@media (max-width: 940px) {
     .CardColumns {
         display: flex;
         flex-direction: column;
@@ -138,7 +139,9 @@
     border-radius: 20px;
     margin: 5px 0;
     padding-left: 20px;
+    box-sizing: border-box;
 }
+
 .BtnField {
     border: 1px solid #71a8d0;
     height: 40px;

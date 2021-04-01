@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import DayPicker, { DateUtils } from "react-day-picker";
-import "react-day-picker/lib/style.css";
 import { handleChangeDay } from "../AC";
 import { dayRangeSelector } from "../selectors";
-import styles from "./styles.module.css";
+import "react-day-picker/lib/style.css";
 
-class DayPickerOn extends Component {
+class DayPickerComponent extends Component {
     constructor(props) {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
@@ -47,7 +46,6 @@ class DayPickerOn extends Component {
 
     handleDayMouseEnter() {
         return (day) => {
-            //console.log("day", day, this);
             const { from, to } = this.props.range;
             if (!this.isSelectingFirstDay(from, to, day)) {
                 handleChangeDay({
@@ -64,24 +62,20 @@ class DayPickerOn extends Component {
         const selectedDays = [from, { from, to: enteredTo }];
         return (
             <DayPicker
-                className={styles.Range}
                 numberOfMonths={2}
                 fromMonth={from}
                 selectedDays={selectedDays}
                 disabledDays={disabledDays}
                 modifiers={modifiers}
                 onDayClick={this.handleDayClick}
-                onDayMouseEnter={this.handleDayMouseEnter()}
             />
         );
     }
 }
 
 export default connect(
-    (store) => {
-        return {
-            range: dayRangeSelector(store)
-        };
-    },
+    (store) => ({
+        range: dayRangeSelector(store)
+    }),
     { handleChangeDay }
-)(DayPickerOn);
+)(DayPickerComponent);

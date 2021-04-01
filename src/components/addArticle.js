@@ -25,7 +25,10 @@ class AddComment extends Component {
     render() {
         return (
             <div className={classes.inputForm}>
-                <form onSubmit={this.handleSubmit}>
+                <form
+                    className={classes.inputTest}
+                    onSubmit={this.handleSubmit}
+                >
                     <input
                         className={classes.inputField}
                         placeholder="Name"
