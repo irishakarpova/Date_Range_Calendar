@@ -37,3 +37,27 @@ export default connect((store) => {
 })(Accordion(ArticleList));
 
 ```
+
+<b>CreateSelector function</b> from the Reselect library remembers the arguments passed in the last time it was invoked and doesn’t recalculate if the arguments are the same. This way,  i can avoid unnecessary rendering.
+
+```javaScript
+export const dayRangeSelector = (store) => store.filters.dateRange;
+export const getAriclesMap = (store) => store.articles;
+export const getAriclesList = createSelector(getAriclesMap, (articlesMap) =>
+    articlesMap.valueSeq().toArray()
+);
+
+export const filtratedArticleSelector = createSelector(
+    dayRangeSelector,
+    getAriclesList,
+    (dateRange, articles) => {
+        const { from, to } = dateRange;
+
+        return articles.filter((article) => {
+            const published = Date.parse(article.date);
+            return !from || !to || (published > from && published < to);
+        });
+    }
+);
+
+```
