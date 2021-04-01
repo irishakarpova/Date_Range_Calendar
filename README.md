@@ -2,7 +2,7 @@
 
 <p>To allow to use filter range in any component in App, I need to move it to global state.</p>
 
-<p>Reducer function from Redux developed read and calculate new state. Here, I keep filters` state.</p>
+<b>Reducer function</b> from Redux developed read and calculate new state. Here, I keep filter state.
 
 ```javaScript
 const defaultFilters = {
@@ -25,5 +25,15 @@ export default function ArticlesFilters(filters = defaultFilters, action) {
     }
 }
 
+```
+
+<b>Connect function</b> I use to bridge regular React component with its state inserted in Redux store.
+
+```javaScript
+export default connect((store) => {
+    return {
+        articles: filtratedArticleSelector(store)
+    };
+})(Accordion(ArticleList));
 
 ```
