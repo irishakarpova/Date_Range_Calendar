@@ -26,22 +26,24 @@
     font-size: 24px;
     color: #e5901c;
     margin-top: 15px;
+    letter-spacing: 0.03em;
 }
 .CardDate {
     font-family: "Signika", sans-serif;
-
     color: #71a8d0;
     font-weight: 700;
     margin: 0;
     padding-top: 25px;
+    letter-spacing: 0.03em;
 }
 .CardText {
     font-family: "Nunito Sans", sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     color: #606060;
-    line-height: 28px;
+    line-height: 26px;
     padding-top: 30px;
     padding-bottom: 20px;
+    letter-spacing: 0.03em;
 }
 .AiFillCloseCircle_Btn {
     background: none;
@@ -107,11 +109,15 @@
     font-style: italic;
     font-weight: 600;
     margin-bottom: 0;
+    font-size: 14px;
+    letter-spacing: 0.03em;
 }
 .CardListText {
     font-family: "Source Sans Pro", sans-serif;
     color: #808080;
     font-style: italic;
+    font-size: 16px;
+    letter-spacing: 0.03em;
 }
 
 .reset_btn {

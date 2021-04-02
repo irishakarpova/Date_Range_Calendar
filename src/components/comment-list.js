@@ -25,7 +25,7 @@ class CommentList extends Component {
                             handleOpenArticleId(id);
                         }}
                     >
-                        <h4 className={styles.CardListName}>QUOTES</h4>
+                        <h4 className={styles.CardListName}>INSPIRATION</h4>
                         {isOpen ? (
                             <AiFillUpCircle className={styles.Up_Down_Close} />
                         ) : (

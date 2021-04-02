@@ -2,7 +2,6 @@ import { createSelector } from "reselect";
 
 export const dayRangeSelector = (store) => store.filters.dateRange;
 export const getAriclesMap = (store) => store.articles;
-
 export const getAriclesList = createSelector(getAriclesMap, (articlesMap) =>
     articlesMap.valueSeq().toArray()
 );

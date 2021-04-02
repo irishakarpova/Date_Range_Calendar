@@ -29,7 +29,6 @@ class ArticleList extends Component {
             ) : null;
         });
     }
-
     get itemsListRight() {
         const { articles, openArticleId, handleOpenArticleId } = this.props;
         return articles.map((article, index) => {
