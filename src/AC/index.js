@@ -1,3 +1,5 @@
+import { articles } from "../fixtures";
+
 export function increment() {
     return {
         type: "INCREMENT"
@@ -23,7 +25,6 @@ export function deleteArticle(id) {
     };
 }
 export function addComment(comment, articleId) {
-    console.log("comment", comment, articleId);
     return {
         type: "ADD_COMMENT",
         payload: { comment, articleId },

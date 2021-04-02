@@ -77,7 +77,7 @@ export const articles = [
         date: "August 14, 2021",
         title: "National V-J Day in USA",
         text:
-            "Days after the US dropped atomic bombs on two Japanese cities, Hiroshima and Nagasaki, Imperial Japan surrendered bringing World War II to an end. The announcement of the surrender was made by the Japanese in the afternoon of August 15th 1945, though due to time differences it was received when it was still August 14th in the US. The official surrender ceremony took place on September 2nd 1945 on the deck of the battleship USS Missouri.",
+            "Days after the US dropped atomic bombs on two Japanese cities, Hiroshima and Nagasaki, Imperial Japan surrendered bringing World War II to an end. The announcement of the surrender was made by the Japanese in the afternoon of August 15th 1945, though due to time differences it was received when it was still August 14th in the US.",
         comments: ["ba5ba4778e25", "224dabebeb17", "c518f998ad5c"]
     },
     {
@@ -126,7 +126,7 @@ export const articles = [
         date: "November 25, 2021",
         title: "National Day of Listening",
         text:
-            "National Day of Listening is an unofficial holiday celebrated on the Friday after Thanksgiving Day. It was launched in 2008 by StoryCorps, a NPO whose mission is to provide Americans of all beliefs and backgrounds to record, preserve, and share the stories of their lives. National Day of Listening was designed as an alternative to the Black Friday shopping madness. The day after Thanksgiving was chosen because on this day families and friends are more likely to gather together. On this day, StoryCorps encourages people to interview a loved one, friend, or member of their community and share this interview with the world",
+            "National Day of Listening was designed as an alternative to the Black Friday shopping madness. The day after Thanksgiving was chosen because on this day families and friends are more likely to gather together. On this day, StoryCorps encourages people to interview a loved one, friend, or member of their community and share this interview with the world",
         comments: ["a9d7abf0a417", "bab396fc0f39", "39e8fc3ba59f"]
     },
     {
@@ -142,7 +142,7 @@ export const articles = [
         date: "December 27, 2021",
         title: "National Chocolate Candy Day",
         text:
-            "Chocolate candy is one of the most popular sweets in the world, no wonder it has its own holiday. The National Chocolate Candy Day is celebrated annually on December 28. Chocolate candy is a confection covered in chocolate, for example a chocolate truffle or a chocolate bar. Chocolate truffles were first made in France in the late 19th century. Chocolate truffles can be made with a great variety of fillings including chocolate ganache, nuts, caramel, cream, toffee, fudge, nougat, fruits, berries, marshmallow, and even liqueur.",
+            "Chocolate candy is one of the most popular sweets in the world, no wonder it has its own holiday. Chocolate candy is a confection covered in chocolate, for example a chocolate truffle or a chocolate bar. Chocolate truffles were first made in France in the late 19th century.",
         comments: ["1a1d975acc47", "7404eee99ddd", "736c78770fe8"]
     },
 
@@ -167,7 +167,7 @@ export const articles = [
         date: "January 1, 2021",
         title: "Apple Gifting Day",
         text:
-            "This unusual food holiday of unknown origin is a nice way to start the new year. Up until the 17th century, apple was a generic term for fruit other than berries. The apple symbolizes many things such as love, knowledge, bounty, good heath, beauty, and rebirth. One possible meaning behind giving an apple is to wish the recipient good health and a fruitful year. Give apples to friends and family.",
+            "The apple symbolizes many things such as love, knowledge, bounty, good heath, beauty, and rebirth. One possible meaning behind giving an apple is to wish the recipient good health and a fruitful year. Give apples to friends and family.",
         comments: ["5ef03111c903", "e5629cd44f2e"]
     },
     {
