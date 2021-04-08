@@ -4,8 +4,30 @@ import WithAction from "./withAccordion";
 import styles from "./styles.module.css";
 import AddArticle from "./addArticle";
 import { AiFillDownCircle, AiFillUpCircle } from "react-icons/ai";
+import { connect } from "react-redux";
+import { fetchComments } from "../AC";
+import { commentsLoadingSelector, commentsLoadedSelector } from "../selectors";
 
 class CommentList extends Component {
+    constructor() {
+        super();
+        this.state = { a: false };
+    }
+
+    componentDidUpdate() {
+        const {
+            fetchComments,
+            isOpenComment,
+
+            id,
+            loaded
+        } = this.props;
+
+        if (isOpenComment && !loaded) {
+            fetchComments(id);
+        }
+    }
+
     render() {
         const {
             comments = [],
@@ -38,7 +60,7 @@ class CommentList extends Component {
                 {isOpenComment && (
                     <>
                         <ul className={styles.CardlistComments}>
-                            {this.itemsList}
+                            {this.itemsList()}
                         </ul>
                         {isOpen ? (
                             <button
@@ -56,7 +78,8 @@ class CommentList extends Component {
         );
     }
 
-    get itemsList() {
+    itemsList() {
+        if (this.props.loading) return <p>Loading</p>;
         const { comments = [] } = this.props;
 
         return comments.map((id) => (
@@ -66,4 +89,12 @@ class CommentList extends Component {
         ));
     }
 }
-export default WithAction(CommentList);
+export default connect(
+    (store) => {
+        return {
+            loading: commentsLoadingSelector(store),
+            loaded: commentsLoadedSelector(store)
+        };
+    },
+    { fetchComments }
+)(WithAction(CommentList));

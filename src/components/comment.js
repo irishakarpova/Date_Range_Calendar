@@ -3,12 +3,12 @@ import { getComment } from "../selectors";
 import styles from "./styles.module.css";
 
 function Comment({ comment }) {
-    return (
+    return comment ? (
         <>
             <h5 className={styles.CardListUserName}>{comment.user}</h5>
             <p className={styles.CardListText}>{comment.text}</p>
         </>
-    );
+    ) : null;
 }
 
 const createMapStateToProps = () => {

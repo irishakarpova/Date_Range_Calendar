@@ -1,18 +1,26 @@
 import ArticleList from "./components/article-list";
-import { Provider } from "react-redux";
-import store from "./store";
+import { Route, Redirect, Switch } from "react-router-dom";
 import DayPicker from "./components/dayPicker";
 import "./App.css";
 
 function App() {
     return (
-        <div className="container">
-            <Provider store={store}>
-                <DayPicker />
-                <ArticleList />
-            </Provider>
-        </div>
+        <>
+            <DayPicker />
+            <Switch>
+                <Route
+                    path="/article/:page"
+                    render={getArticlesPagination}
+                ></Route>
+                <Redirect from="/article" to="/article/1" exact />
+
+                <Route path="/error" render={() => <h1>Error Page</h1>} />
+            </Switch>
+        </>
     );
+}
+function getArticlesPagination({ match }) {
+    return <ArticleList page={match.params.page} />;
 }
 
 export default App;

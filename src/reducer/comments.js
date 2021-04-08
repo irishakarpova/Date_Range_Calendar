@@ -1,4 +1,3 @@
-import { comments } from "../fixtures";
 import { Record, Map } from "immutable";
 
 function arrayToMap(arr, CommentRecord) {
@@ -13,18 +12,34 @@ const CommentRecord = Record({
     user: null,
     text: null
 });
+const ReducerComment = Record({
+    entities: new Map({}),
+    loading: false,
+    loaded: false
+});
 
 export default function CommentsReducer(
-    commentsState = arrayToMap(comments, CommentRecord),
+    commentsState = new ReducerComment(),
     action
 ) {
-    const { type, payload, randomId } = action;
+    const { type, payload, randomId, response } = action;
     switch (type) {
         case "ADD_COMMENT":
-            return commentsState.set(randomId, {
-                ...payload.comment,
-                id: randomId
-            });
+            return commentsState.setIn(
+                ["entities", randomId],
+                new CommentRecord({
+                    ...payload.comment,
+                    id: randomId
+                })
+            );
+        case "START_FETCHING_COMMENTS":
+            return commentsState.set("loading", true);
+        case "FETCH_COMMENTS":
+            return commentsState
+                .mergeIn(["entities"], arrayToMap(response, CommentRecord))
+                .set("loading", false)
+                .set("loaded", true);
+
         default:
             return commentsState;
     }

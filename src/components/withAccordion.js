@@ -3,7 +3,6 @@ import React from "react";
 const WithAction = (OriginalComponent) =>
     class AccordionComponent extends React.Component {
         state = {
-            isOpenComment1: null,
             isOpen: true
         };
         handleOpenComment = (id) => {
@@ -20,7 +19,6 @@ const WithAction = (OriginalComponent) =>
             return (
                 <OriginalComponent
                     {...this.props}
-                    isOpenComment1={this.state.isOpenComment1}
                     isOpen={this.state.isOpen}
                     handleOpenComment={this.handleOpenComment}
                     handleOpenForm={this.handleOpenForm}

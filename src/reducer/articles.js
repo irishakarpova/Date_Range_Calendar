@@ -1,4 +1,3 @@
-import { articles } from "../fixtures";
 import { Record, Map } from "immutable";
 
 function arrayToMap(arr, ArticleRecord) {
@@ -14,23 +13,46 @@ const ArticleRecord = Record({
     date: null,
     comments: []
 });
+const ReducerRecord = Record({
+    entities: arrayToMap([], ArticleRecord),
+    loading: false,
+    error: null,
+    loaded: false,
+    pagination: new Map({}),
+    total: null,
+    loadedPage: null
+});
 
 export default function ArticlesReducer(
-    articlesState = arrayToMap(articles, ArticleRecord),
+    articlesState = new ReducerRecord(),
     action
 ) {
-    const { type, payload, randomId } = action;
+    const { type, payload, randomId, response } = action;
 
     switch (type) {
         case "ADD_COMMENT":
             return articlesState.updateIn(
-                [payload.articleId, "comments"],
+                ["entities", payload.articleId, "comments"],
                 (comments) => {
                     return comments.concat(randomId);
                 }
             );
+        case "START_FETCHING_ARTICLES": {
+            return articlesState.set("loading", true);
+        }
+
+        case "FETCH_ARTICLES":
+            return articlesState
+                .set("total", response.total)
+                .update("entities", (entities) =>
+                    arrayToMap(response.records, ArticleRecord)
+                )
+                .set("loadedPage", payload.page)
+                .set("loading", false)
+                .set("loaded", true);
+
         case "DELETE_ARTICLE":
-            return articlesState.delete(payload.id);
+            return articlesState.deleteIn(["entities", payload.id]);
 
         default:
             return articlesState;
