@@ -25,21 +25,30 @@ export function addComment(comment, articleId) {
         generateId: true
     };
 }
-export function fetchArticles(page) {
+export function fetchArticles(page, from, to) {
+    from = from ? from.getTime() : null;
+    to = to ? to.getTime() : null;
     return (dispatch, getState) => {
         const {
             articles: { loadedPage },
-            articles: { entities }
+            articles: { loadedFrom },
+            articles: { loadedTo }
         } = getState();
 
-        if (loadedPage === page) return;
+        console.log("loadedFrom", loadedFrom);
+        if (loadedPage === page && loadedFrom === from && loadedTo === to)
+            return;
 
-        fetch(`/api/article?limit=5&offset=${(page - 1) * 5}`)
+        fetch(
+            `/api/article?limit=5&offset=${(page - 1) * 5}&from=${
+                from ? from : ""
+            }&to=${to ? to : ""}`
+        )
             .then((res) => res.json())
             .then((response) =>
                 dispatch({
                     type: "FETCH_ARTICLES",
-                    payload: { page },
+                    payload: { page, from, to },
                     response
                 })
             )

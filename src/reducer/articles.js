@@ -20,7 +20,9 @@ const ReducerRecord = Record({
     loaded: false,
     pagination: new Map({}),
     total: null,
-    loadedPage: null
+    loadedPage: null,
+    loadedFrom: null,
+    loadedTo: null
 });
 
 export default function ArticlesReducer(
@@ -49,7 +51,9 @@ export default function ArticlesReducer(
                 )
                 .set("loadedPage", payload.page)
                 .set("loading", false)
-                .set("loaded", true);
+                .set("loaded", true)
+                .set("loadedFrom", payload.from)
+                .set("loadedTo", payload.to);
 
         case "DELETE_ARTICLE":
             return articlesState.deleteIn(["entities", payload.id]);

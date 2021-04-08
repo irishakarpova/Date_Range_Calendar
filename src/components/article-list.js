@@ -3,11 +3,14 @@ import Article from "./article";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import {
-    filtratedArticleSelector,
+    dayRangeSelector,
+    getAriclesList,
     articlesLoadingSelector,
     articlesLoadedSelector,
     totalCommentsSelector,
-    loadedPageSelector
+    loadedPageSelector,
+    loadedFrom,
+    loadedTo
 } from "../selectors";
 import styles from "./styles.module.css";
 import Accordion from "./accordion";
@@ -19,17 +22,40 @@ class ArticleList extends Component {
     };
 
     componentDidMount() {
-        const { fetchArticles } = this.props;
-        fetchArticles(this.props.page);
+        const { fetchArticles, dayRangeSelector } = this.props;
+        fetchArticles(
+            this.props.page,
+            dayRangeSelector.from,
+            dayRangeSelector.to
+        );
     }
     componentDidUpdate() {
-        const { fetchArticles, page, loadedPage } = this.props;
-        if (loadedPage !== page) fetchArticles(page);
+        const {
+            fetchArticles,
+            page,
+            loadedPage,
+            loadedFrom,
+            loadedTo,
+            dayRangeSelector
+        } = this.props;
+        if (
+            loadedPage !== page ||
+            loadedFrom !==
+                (dayRangeSelector.from
+                    ? dayRangeSelector.from.getTime()
+                    : null) ||
+            loadedTo !==
+                (dayRangeSelector.to ? dayRangeSelector.to.getTime() : null)
+        ) {
+            fetchArticles(page, dayRangeSelector.from, dayRangeSelector.to);
+
+            console.log(loadedFrom, loadedTo);
+        }
     }
 
     render() {
         if (!this.props.total) return <p>Loading</p>;
-        console.log(this.props.articles.length);
+        console.log("dayRangeSelector", this.props.dayRangeSelector);
         return (
             <>
                 {this.getPaginator()}
@@ -105,11 +131,14 @@ class ArticleList extends Component {
 export default connect(
     (store, props) => {
         return {
-            articles: filtratedArticleSelector(store, props),
+            dayRangeSelector: dayRangeSelector(store),
+            articles: getAriclesList(store, props),
             loading: articlesLoadingSelector(store),
             loaded: articlesLoadedSelector(store),
             total: totalCommentsSelector(store),
-            loadedPage: loadedPageSelector(store)
+            loadedPage: loadedPageSelector(store),
+            loadedFrom: loadedFrom(store),
+            loadedTo: loadedTo(store)
         };
     },
     { fetchArticles }

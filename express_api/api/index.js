@@ -9,14 +9,25 @@ const reply = (res, body, timeout = 1000, status = 200) =>
 
 router.get("/article", function (req, res, next) {
     var articles = mocks.articles.map(function (article) {
-            return assign({}, article, {});
-        }),
-        limit = Number(req.query.limit) || articles.length,
-        offset = Number(req.query.offset) || 0;
+        return assign({}, article, {});
+    });
+    let filtered = [];
+    articles.map((article) => {
+        if (
+            (!req.query.from ||
+                new Date(article.date).getTime() >= req.query.from) &&
+            (!req.query.to || new Date(article.date).getTime() <= req.query.to)
+        ) {
+            filtered.push(article);
+        }
+    });
+
+    let limit = Number(req.query.limit) || filtered.length;
+    let offset = Number(req.query.offset) || 0;
 
     reply(res, {
-        total: articles.length,
-        records: articles.slice(offset, limit + offset)
+        total: filtered.length,
+        records: filtered.slice(offset, limit + offset)
     });
 });
 
