@@ -32,33 +32,38 @@ export function fetchArticles(page, from, to) {
         const {
             articles: { loadedPage },
             articles: { loadedFrom },
-            articles: { loadedTo }
+            articles: { loadedTo },
+            filters: { dateRange }
         } = getState();
 
-        console.log("loadedFrom", loadedFrom);
         if (loadedPage === page && loadedFrom === from && loadedTo === to)
             return;
 
-        fetch(
-            `/api/article?limit=5&offset=${(page - 1) * 5}&from=${
-                from ? from : ""
-            }&to=${to ? to : ""}`
+        if (
+            loadedPage !== page ||
+            loadedFrom !== (dateRange.from ? dateRange.from.getTime() : null) ||
+            loadedTo !== (dateRange.to ? dateRange.to.getTime() : null)
         )
-            .then((res) => res.json())
-            .then((response) =>
-                dispatch({
-                    type: "FETCH_ARTICLES",
-                    payload: { page, from, to },
-                    response
-                })
+            fetch(
+                `/api/article?limit=5&offset=${(page - 1) * 5}&from=${
+                    from ? from : ""
+                }&to=${to ? to : ""}`
             )
-            .catch((error) => {
-                dispatch(replace("/error"));
-                dispatch({
-                    type: "FAIL_FETCH_ARTICLES",
-                    error
+                .then((res) => res.json())
+                .then((response) =>
+                    dispatch({
+                        type: "FETCH_ARTICLES",
+                        payload: { page, from, to },
+                        response
+                    })
+                )
+                .catch((error) => {
+                    dispatch(replace("/error"));
+                    dispatch({
+                        type: "FAIL_FETCH_ARTICLES",
+                        error
+                    });
                 });
-            });
     };
 }
 
@@ -84,19 +89,5 @@ export function fetchComments(id) {
                     error
                 });
             });
-    };
-}
-
-export function fetchArticleById(id) {
-    return (dispatch) => {
-        fetch(`./api/article/${id}`)
-            .then((res) => res.json())
-            .then((response) =>
-                dispatch({
-                    type: "FETCH_ARTICLE",
-                    payload: { id },
-                    response
-                })
-            );
     };
 }

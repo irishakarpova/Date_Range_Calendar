@@ -6,56 +6,27 @@ import {
     dayRangeSelector,
     getAriclesList,
     articlesLoadingSelector,
-    articlesLoadedSelector,
-    totalCommentsSelector,
-    loadedPageSelector,
-    loadedFrom,
-    loadedTo
+    totalCommentsSelector
 } from "../selectors";
 import styles from "./styles.module.css";
 import Accordion from "./accordion";
 import { fetchArticles } from "../AC";
 
 class ArticleList extends Component {
-    state = {
-        showItems: 4
-    };
-
     componentDidMount() {
-        const { fetchArticles, dayRangeSelector } = this.props;
-        fetchArticles(
-            this.props.page,
-            dayRangeSelector.from,
-            dayRangeSelector.to
-        );
+        const { fetchArticles, page } = this.props;
+        const { from, to } = this.props.dayRangeSelector;
+        fetchArticles(page, from, to);
     }
     componentDidUpdate() {
-        const {
-            fetchArticles,
-            page,
-            loadedPage,
-            loadedFrom,
-            loadedTo,
-            dayRangeSelector
-        } = this.props;
-        if (
-            loadedPage !== page ||
-            loadedFrom !==
-                (dayRangeSelector.from
-                    ? dayRangeSelector.from.getTime()
-                    : null) ||
-            loadedTo !==
-                (dayRangeSelector.to ? dayRangeSelector.to.getTime() : null)
-        ) {
-            fetchArticles(page, dayRangeSelector.from, dayRangeSelector.to);
-
-            console.log(loadedFrom, loadedTo);
-        }
+        const { fetchArticles, page } = this.props;
+        const { from, to } = this.props.dayRangeSelector;
+        fetchArticles(page, from, to);
     }
 
     render() {
         if (!this.props.total) return <p>Loading</p>;
-        console.log("dayRangeSelector", this.props.dayRangeSelector);
+
         return (
             <>
                 {this.getPaginator()}
@@ -134,11 +105,7 @@ export default connect(
             dayRangeSelector: dayRangeSelector(store),
             articles: getAriclesList(store, props),
             loading: articlesLoadingSelector(store),
-            loaded: articlesLoadedSelector(store),
-            total: totalCommentsSelector(store),
-            loadedPage: loadedPageSelector(store),
-            loadedFrom: loadedFrom(store),
-            loadedTo: loadedTo(store)
+            total: totalCommentsSelector(store)
         };
     },
     { fetchArticles }

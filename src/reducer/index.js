@@ -3,12 +3,10 @@ import { connectRouter } from "connected-react-router";
 import articles from "./articles";
 import comments from "./comments";
 import filters from "./filters";
-import counter from "./counter";
 import history from "../history";
 
 const rootReducer = combineReducers({
-    articles: articles,
-    counter,
+    articles,
     comments,
     filters,
     router: connectRouter(history)

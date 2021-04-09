@@ -28,15 +28,3 @@ export const articlesPagenationSelector = (store) => store.articles.pagination;
 export const pageSelector = (_, props) => props.page;
 
 export const loadedPageSelector = (store) => store.articles.loadedPage;
-
-export const filtratedArticleSelector = createSelector(
-    dayRangeSelector,
-    getAriclesList,
-    (dateRange, articles) => {
-        const { from, to } = dateRange;
-        return articles.filter((article) => {
-            const published = Date.parse(article.date);
-            return !from || !to || (published > from && published < to);
-        });
-    }
-);
