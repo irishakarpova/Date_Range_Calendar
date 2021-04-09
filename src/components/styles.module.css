@@ -159,12 +159,15 @@
 .menu {
     display: flex;
     flex-direction: row;
+
+    padding-top: 20px;
 }
 .menuItems {
     list-style-type: none;
     padding: 5px 10px;
-    background: #fefefe;
-    margin: 3px;
+    font-size: 14px;
+    background: #f7f7f7;
+    margin: 0 3px;
     border-radius: 5px;
     -webkit-box-shadow: 0 0 2px rgb(0 0 0 / 2%);
     box-shadow: 0 0 20px rgb(0 0 0 / 2%);
@@ -174,4 +177,26 @@
 }
 ul {
     padding-left: 0px;
+}
+.containerPicker {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 580px;
+    -webkit-box-shadow: 0 0 2px rgb(0 0 0 / 6%);
+    box-shadow: 0 0 20px rgb(0 0 0 / 6%);
+
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid #f8f7f7;
+}
+.btnReset {
+    color: #fefefe;
+    background-color: #8b9898;
+    border: none;
+    border-radius: 2px;
+    padding: 2px 7px;
+    margin-right: 28px;
+    font-size: 13px;
+    cursor: pointer;
 }

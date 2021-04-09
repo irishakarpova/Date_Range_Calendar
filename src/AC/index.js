@@ -6,10 +6,22 @@ export function increment() {
     };
 }
 
+export function handleResetClick() {
+    return (dispatch) => {
+        dispatch({
+            type: "RESET"
+        });
+        dispatch(replace("/article/1"));
+    };
+}
+
 export function handleChangeDay(dateRange) {
-    return {
-        type: "CHANGE_DATE_RANGE",
-        payload: { dateRange }
+    return (dispatch) => {
+        dispatch({
+            type: "CHANGE_DATE_RANGE",
+            payload: { dateRange }
+        });
+        dispatch(replace("/article/1"));
     };
 }
 export function deleteArticle(id) {
@@ -30,9 +42,7 @@ export function fetchArticles(page, from, to) {
     to = to ? to.getTime() : null;
     return (dispatch, getState) => {
         const {
-            articles: { loadedPage },
-            articles: { loadedFrom },
-            articles: { loadedTo },
+            articles: { loadedPage, loadedFrom, loadedTo },
             filters: { dateRange }
         } = getState();
 

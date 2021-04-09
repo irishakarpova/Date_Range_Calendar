@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
-import { handleChangeDay } from "../AC";
+import { handleChangeDay, handleResetClick } from "../AC";
 import { dayRangeSelector } from "../selectors";
-import styles from "./styles.module.css";
+import classes from "./styles.module.css";
 
 class DayPickerOn extends Component {
     constructor(props) {
@@ -62,15 +62,26 @@ class DayPickerOn extends Component {
         const disabledDays = { before: this.props.from };
         const selectedDays = [from, { from, to: enteredTo }];
         return (
-            <DayPicker
-                numberOfMonths={2}
-                fromMonth={from}
-                selectedDays={selectedDays}
-                disabledDays={disabledDays}
-                modifiers={modifiers}
-                onDayClick={this.handleDayClick}
-                onDayMouseEnter={this.handleDayMouseEnter()}
-            />
+            <div className={classes.containerPicker}>
+                <div>
+                    <DayPicker
+                        numberOfMonths={2}
+                        fromMonth={from}
+                        selectedDays={selectedDays}
+                        disabledDays={disabledDays}
+                        modifiers={modifiers}
+                        onDayClick={this.handleDayClick}
+                        onDayMouseEnter={this.handleDayMouseEnter()}
+                    />
+                </div>
+
+                <button
+                    className={classes.btnReset}
+                    onClick={this.props.handleResetClick}
+                >
+                    Reset
+                </button>
+            </div>
         );
     }
 }
@@ -81,5 +92,5 @@ export default connect(
             range: dayRangeSelector(store)
         };
     },
-    { handleChangeDay }
+    { handleChangeDay, handleResetClick }
 )(DayPickerOn);

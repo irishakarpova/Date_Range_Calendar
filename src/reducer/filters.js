@@ -13,6 +13,12 @@ export default function ArticlesFilters(filters = defaultFilters, action) {
                 dateRange: { ...filters.dateRange, ...action.payload.dateRange }
             };
         }
+        case "RESET": {
+            return {
+                ...filters,
+                dateRange: { ...filters.dateRange, from: null, to: null }
+            };
+        }
         default:
             return filters;
     }
