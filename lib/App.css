@@ -1,12 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Signika:wght@600&display=swap");
-body {
-    background-color: #efefef;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 0;
-    margin: 0;
-}
 
 .container {
     display: flex;
